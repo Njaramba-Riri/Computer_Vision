@@ -1,4 +1,4 @@
-# Computer Vision Using OpenCv
+# Computer Vision Using OpenCV
 
 
 ## Unleashing the Power of Computer Vision with OpenCV
