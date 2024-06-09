@@ -27,7 +27,7 @@ while True:
         for ex, ey, ew, eh in eyes:
             cv.rectangle(roi_color, (ex, ey), (ex+ew, ey+eh), (0, 255, 0), 2)
 
-    cv.imshow('img', img)
+    cv.imshow('qqFrames', img)
 
     k = cv.waitKey(1) & 0xff
     if k == 27:
@@ -35,4 +35,4 @@ while True:
 
 
 cap.release()
-cv2.destroyAllWindows()
+cv.destroyAllWindows()
