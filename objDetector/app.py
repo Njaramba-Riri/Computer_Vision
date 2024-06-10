@@ -4,6 +4,7 @@ import numpy as np
 import streamlit as st
 import tempfile
 
+
 from utils import detect_objects, display_objects, detect_video
 
 cd = os.getcwd()
