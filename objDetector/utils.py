@@ -40,9 +40,12 @@ def display_text(img, text, x, y):
     cv.rectangle(img, (x, y-dim[1] - baseline), (x + dim[0], y  + baseline), (255, 255, 255), cv.FILLED)
     cv.putText(img, text, (x, y-5), FONTFACE, FONTSCALE, (0, 0, 0), 1, cv.LINE_AA)
     
-def display_objects(img, objects, threshold=0.2):
+def display_objects(img, objects, threshold=0.2, show=False):
     height = img.shape[0]
     width = img.shape[1]
+    
+    total = []
+    total_dic = {}
     
     for i in range(objects.shape[2]):
         classId = int(objects[0, 0, i, 1])
@@ -56,6 +59,19 @@ def display_objects(img, objects, threshold=0.2):
         if score > threshold:
             display_text(img, "{}".format(labels[classId]).capitalize(), x, y)
             cv.rectangle(img, (x, y), (x+w, y+h), (255, 255, 0), THICKNESS) 
+            
+            total.append(labels[classId])
+    
+    for cls in total:
+        if cls in total_dic:
+            total_dic[cls] += 1
+        else:
+            total_dic[cls] = 1
+        
+    formatted_counts = ', '.join([f"{cls}: {count}" for cls, count in total_dic.items()])
+    
+    if show:
+        st.text(formatted_counts)
     
     return img
 

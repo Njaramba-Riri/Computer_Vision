@@ -46,6 +46,8 @@ def real_timeDetection(model=model, source=s):
     cap = cv.VideoCapture(source)
     stframe = st.empty()
     frames = []
+    frame_dict = {}
+    
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:

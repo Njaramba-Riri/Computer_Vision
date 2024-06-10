@@ -22,12 +22,12 @@ if option == "--------------------":
     image = Image.open(file)
     image = np.array(image)
     objects = detect_objects(image)
-    drawn = display_objects(image, objects)
+    drawn = display_objects(image, objects, show=True)
     st.image(drawn, "Detected Objects")
     
     if st.button('Show video sample'):
         detect_video(default)
-        # st.experimental_rerun()
+        # st.rerun()
 
 if option == "Image":
     file = st.file_uploader("Select a file", type=['jpg', 'jpeg', 'png'])
@@ -36,7 +36,7 @@ if option == "Image":
             image = Image.open(file)
             image = np.array(image)
             objects = detect_objects(image)
-            drawn = display_objects(image, objects)
+            drawn = display_objects(image, objects, show=True)
             st.image(drawn, "Detected Objects")
         except Exception as e:
             st.error(f"An error occured: {e}")
